@@ -42,7 +42,8 @@ def writeToTxt(backup_list, application_list, output_file, logger):
                  "Serial Number: \t" + backup_list[14] + "\n" +
                  "Is Full Backup: \t" + str(backup_list[15]) + "\n" +
                  "Version: \t" + backup_list[16] + "\n" +
-                 "iTunes Version: \t" + backup_list[17] +  "\n\n")
+                 "iTunes Version: \t" + backup_list[17] + "\n" + 
+                 "Unique Identifier: \t" + backup_list[18] +  "\n\n")
 
     output.write("\nAPPLICATIONS INSTALLED\n")
     for app in application_list:
@@ -75,7 +76,7 @@ def writeToDb(backup_list, application_list, output_file, logger):
                       "iOS_Version TEXT, Last_Backup_Completion DATE, " \
                       "Last_Backup_Write_Completed DATE, User_Computers TEXT, Passcode_Set BOOL, Encrypted BOOL, " \
                       "GUID TEXT, ICCID TEXT, IMEI TEXT, MEID TEXT, Serial_Num TEXT," \
-                      "Full_Backup BOOL, Version TEXT, iTunes_Version TEXT);"
+                      "Full_Backup BOOL, Version TEXT, iTunes_Version TEXT,Unique_Identifier TEXT);"
     try:
         c.execute(createBackQuery)
     except Exception as ex:
@@ -127,7 +128,7 @@ def writeToCsv(backup_list, application_list, output_file, logger):
                 "iOS_Version", "Last_Backup_Completion",
                 "Last_Backup_Write_Completed", "User_Computers", "Passcode_Set", "Encrypted",
                 "GUID", "ICCID", "IMEI", "MEID", "Serial_Num",
-                "Full_Backup", "Version", "iTunes_Version"]
+                "Full_Backup", "Version", "iTunes_Version", "Unique_Identifier"]
         wr = csv.writer(backup_csv_handle, quoting=csv.QUOTE_ALL)
         wr.writerows([columns, backup_list])
 

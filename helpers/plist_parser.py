@@ -126,7 +126,8 @@ def backupReader(info_plist, manifest_plist, status_plist, logger):
         info_plist.get('Serial Number', ''),
         is_full_backup,
         status_version,
-        info_plist.get('iTunes Version', '')]
+        info_plist.get('iTunes Version', ''),
+        info_plist.get('Unique Identifier')]
 
 
 def readPlists(status_plist_path, manifest_plist_path, info_plist_path, logger, output_dir):
